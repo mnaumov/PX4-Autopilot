@@ -134,6 +134,9 @@ void Battery::updateBatteryStatus(const hrt_abstime &timestamp)
 
 battery_status_s Battery::getBatteryStatus()
 {
+	battery_temperature_s bat_temp{};
+	_battery_temperature_sub.copy(&bat_temp);
+
 	battery_status_s battery_status{};
 	battery_status.voltage_v = _voltage_v;
 	battery_status.voltage_filtered_v = _voltage_filter_v.getState();
@@ -144,7 +147,8 @@ battery_status_s Battery::getBatteryStatus()
 	battery_status.remaining = _state_of_charge;
 	battery_status.scale = _scale;
 	battery_status.time_remaining_s = computeRemainingTime(_current_a);
-	battery_status.temperature = NAN;
+	//battery_status.temperature = NAN;
+	battery_status.temperature = bat_temp.temperature_deg;
 	battery_status.cell_count = _params.n_cells;
 	battery_status.connected = _connected;
 	battery_status.source = _source;

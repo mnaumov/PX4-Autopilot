@@ -57,6 +57,7 @@
 #include <uORB/Subscription.hpp>
 #include <uORB/topics/actuator_controls.h>
 #include <uORB/topics/battery_status.h>
+#include <uORB/topics/battery_temperature.h>
 
 /**
  * BatteryBase is a base class for any type of battery.
@@ -148,6 +149,7 @@ private:
 
 	uORB::Subscription _actuator_controls_0_sub{ORB_ID(actuator_controls_0)};
 	uORB::PublicationMulti<battery_status_s> _battery_status_pub{ORB_ID(battery_status)};
+	uORB::Subscription _battery_temperature_sub{ORB_ID(battery_temperature)};
 
 	bool _connected{false};
 	const uint8_t _source;

@@ -52,6 +52,7 @@ set(msg_files
 	airspeed_wind.msg
 	autotune_attitude_control_status.msg
 	battery_status.msg
+	battery_temperature.msg
 	camera_capture.msg
 	camera_status.msg
 	camera_trigger.msg
